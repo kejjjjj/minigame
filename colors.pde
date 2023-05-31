@@ -26,7 +26,7 @@ class Gradient
 
 }
 
-Pair<PVector, PVector> RotateLine(PVector A, PVector B, float rotation)
+Pair<PVector, PVector> RotateLine(final PVector A, final PVector B, final float rotation)
 {
    final var distance = dist(A.x, A.y, B.x, B.y);
    var center = new PVector(A.x + (B.x - A.x), A.y + (B.y - A.y));
@@ -40,6 +40,12 @@ Pair<PVector, PVector> RotateLine(PVector A, PVector B, float rotation)
    (center.y - cos(radians(rotation)) * -distance));
     
    return new Pair<PVector, PVector>(newA, newB);
+}
+PVector GetCircularPosition(final PVector p, final float rotation, final float distance)
+{
+      return new PVector(
+   (p.x + sin(radians(rotation)) * distance),
+   (p.y - cos(radians(rotation)) * distance));
 }
 
 void draw_gradient(PVector from, PVector to, color a, color b)
